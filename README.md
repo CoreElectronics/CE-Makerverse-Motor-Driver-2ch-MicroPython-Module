@@ -160,7 +160,7 @@ This class is only designed for driving stepper motors through whole steps - hal
 
 It is assumed that the motor is in the "home" position - the internal step count is initialised at zero.
 
-From the perspective of this class the definition of "forward" and "reverse" is arbitrary. Swapping the polarity of one stepper motor phase will swap the physical 
+From the perspective of this class the definition of "forward" and "reverse" is arbitrary. Swapping the polarity of one stepper motor phase will swap the physical forward/reverse directions.
 
 Parameter | Type | Range | Default | Description
 --- | --- | --- | --- | ---
