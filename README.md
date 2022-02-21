@@ -179,7 +179,7 @@ Note that the RPM argument is required.
 
 Parameter | Type | Range | Default | Description
 --- | --- | --- | --- | ---
-RPM | int or float | -100 to +100 | 0 to 100, motor dependent | Unspecified | The RPM of the stepper motor when moved with bipolarStepper.rotate() or bipolarStepper.returnHome(). Higher values reduce motor torque and risk skipping steps.
+RPM | int or float | 0 to 100, motor dependent | Unspecified | The RPM of the stepper motor when moved with bipolarStepper.rotate() or bipolarStepper.returnHome(). Higher values reduce motor torque and risk skipping steps.
 
 ### bipolarStepper.setHome()
 
@@ -189,7 +189,7 @@ Resets the internal step count to zero. The current physical position of the ste
 
 Returns the number of steps rotated, relative to the home position. A positive number indicates "forward" steps while a negative number indicates a net "backward" rotation.
 
-This value does not "wrap" at a full rotation. If the motor rotates 10 times in one direction it will return 10*stepsPerRotation.
+This value does not "wrap" at a full rotation. If the motor rotates 10 times in one direction this function will return 10*stepsPerRotation.
 
 eg: If there have been 20 steps forward and 5 steps backward this function will return 15.
 
@@ -197,9 +197,11 @@ eg: If there have been 20 steps forward and 5 steps backward this function will 
 
 Rotates the stepper motor to the "home" position by reversing the currently accumulated step count. The motor will rotate at the RPM given by the constructor (default 10 RPM) or the last call to bipolarStepper.setRPM(RPM).
 
-Note that this is an "absolute" position - the step count does not reset after a full rotation but rather accumulates.
+Note that the step count does not reset after a full rotation but instead accumulates.
 
 eg: If the motor has undergone 3 full "forward" rotations calling bipolarStepper.returnHome() will result in 3 full rotations "reverse".
+
+This function will not "reverse replay" all previous steps, it will only rotate back to "home" in a single movement.
 
 ### bipolarStepper.forwardStep()
 
