@@ -168,7 +168,7 @@ pwmPinA | int or Pin | 0 to 28 | 0 | The Raspberry Pi Pico pin which is connecte
 dirPinA | int or Pin | 0 to 28 | 1 | The Raspberry Pi Pico pin which is connected to the motor driver channel's DIR A pin. This can be an integer or Pin object.
 pwmPinB | int or Pin | 0 to 28 | 2 | The Raspberry Pi Pico pin which is connected to the motor driver channel's PWM B pin. This can be an integer or Pin object.
 dirPinB | int or Pin | 0 to 28 | 3 | The Raspberry Pi Pico pin which is connected to the motor driver channel's DIR B pin. This can be an integer or Pin object.
-RPM | int or float | -100 to +100 | 10 | The RPM of the stepper motor when moved with bipolarStepper.rotate() or bipolarStepper.returnHome(). Higher values reduce motor torque and risk skipping steps.
+RPM | int or float | Stepper Motor Dependent | 10 | The RPM of the stepper motor when moved with bipolarStepper.rotate() or bipolarStepper.returnHome(). Higher values reduce motor torque and risk skipping steps.
 stepsPerRotation | int | - | 200 | The number of steps in a full rotation.
 
 ### bipolarStepper.setRPM(RPM)
