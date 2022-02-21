@@ -17,9 +17,9 @@ m1 = motor()
 m1.go()
 ```
 
-An example which drives a motor at 80% speed, with the DIR pin on the default of GP1 and PWM pin set to GP2.
+A more advanced example which drives a motor at 80% speed, with the DIR pin on the default of GP1 and PWM pin set to GP2.
 
-The motor is driven until GP3 becomes high (eg: an infrared sensor detects an obstacle) then switched off.
+The motor is driven until GP3 becomes high (simulating, say, an infrared sensor detecting an obstacle) and is then switched off.
 
 ```python
 from Makerverse_Motor_2ch import motor
@@ -48,7 +48,7 @@ from Makerverse_Motor_2ch import bipolarStepper
 stepper = bipolarStepper()
 
 stepper.rotate(50)
-stepper.rotate(angle=-60)
+stepper.rotate(angle=-180)
 stepper.returnHome()
 ```
 
@@ -59,6 +59,7 @@ stepper.returnHome()
 Returns a motor object given the microcontroller pins which are connected to the PWM and DIR inputs on the motor driver.
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 pwmPin | int or Pin | Microcontroller Dependent | 0 | The microcontroller pin which is connected to the motor driver channel's PWM pin. This can be an integer or Pin object.
 dirPin | int or Pin | Microcontroller Dependent | 1 | The microcontroller pin which is connected to the motor driver channel's DIR pin. This can be an integer or Pin object.
 speed | int | -100 to +100 | 100 | The initial relative speed value. Negative values imply reverse.
@@ -76,6 +77,7 @@ Note that a given speed value doesn't guarantee that the motor will move - there
 required to sufficiently "drive" the motor to overcome static friction, especially if it is under any static load.
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 speed | int | -100 to +100 | - | The relative motor speed. Negative values drive the motor in reverse while positive drive forward. This argument is required.
 
 ### motor.stop()
@@ -117,6 +119,7 @@ Note that a given speed value doesn't guarantee that the motors will move - ther
 If the speed of each motor needs to be set independently twoMotorRobot.motorLeft.speed() and twoMotorRobot.motorRight.speed() can be called.
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 speed | int | -100 to +100 | 0 | The relative motor speed. Negative values drive the motors in reverse while positive values drive forward.
 
 ### twoMotorRobot.turnLeft()
@@ -160,6 +163,7 @@ It is assumed that the motor is in the "home" position - the internal step count
 From the perspective of this class the definition of "forward" and "reverse" is arbitrary. Swapping the polarity of one stepper motor phase will swap the physical 
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 pwmPinA | int or Pin | 0 to 28 | 0 | The Raspberry Pi Pico pin which is connected to the motor driver channel's PWM A pin. This can be an integer or Pin object.
 dirPinA | int or Pin | 0 to 28 | 1 | The Raspberry Pi Pico pin which is connected to the motor driver channel's DIR A pin. This can be an integer or Pin object.
 pwmPinB | int or Pin | 0 to 28 | 0 | The Raspberry Pi Pico pin which is connected to the motor driver channel's PWM B pin. This can be an integer or Pin object.
@@ -174,6 +178,7 @@ Changes the stepper motor's RPM when moving with bipolarStepper.rotate() or bipo
 Note that the RPM argument is required.
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 RPM | int or float | -100 to +100 | 0 to 100, motor dependent | Unspecified | The RPM of the stepper motor when moved with bipolarStepper.rotate() or bipolarStepper.returnHome(). Higher values reduce motor torque and risk skipping steps.
 
 ### bipolarStepper.setHome()
@@ -219,5 +224,6 @@ A postive argument results in a "forward" rotation while a negative one rotates 
 The speed of rotation is controlled by the RPM argument passed at initialisation or the last call to bipolarStepper.setRPM().
 
 Parameter | Type | Range | Default | Description
+--- | --- | --- | --- | ---
 steps | int | -inf to +inf | 0 | The number of steps to rotate. Positve values rotate "forward" while negative values rotate "backward".
 angle | float or int | -inf to +inf | None | An angle to rotate. If this keyword argument is provided the steps argument is ignored (and not required).
