@@ -60,8 +60,8 @@ Returns a motor object given the microcontroller pins which are connected to the
 
 Parameter | Type | Range | Default | Description
 --- | --- | --- | --- | ---
-pwmPin | int or Pin | Microcontroller Dependent | 0 | The microcontroller pin which is connected to the motor driver channel's PWM pin. This can be an integer or Pin object.
-dirPin | int or Pin | Microcontroller Dependent | 1 | The microcontroller pin which is connected to the motor driver channel's DIR pin. This can be an integer or Pin object.
+pwmPin | int or Pin | 0 to 28 | 0 | The Raspberry Pi Pico pin which is connected to the motor driver channel's PWM pin. This can be an integer or Pin object.
+dirPin | int or Pin | 0 to 28 | 1 | The Raspberry Pi Pico pin which is connected to the motor driver channel's DIR pin. This can be an integer or Pin object.
 speed | int | -100 to +100 | 100 | The initial relative speed value. Negative values imply reverse.
 pwmFreq | int | 8 to 400000 | 200 | The pulse width modulation frequency (in Hz) when the motor is driven at a speed below 100%. If unsure, use the 200Hz default. Lower values (50-100Hz) tend to increase DC motor efficiency, especially at low duty cycles. The 400kHz maximum is the limit of the TC78H660 motor driver chip while the 8Hz minimum is set by the RP2040's PWM hardware.
 
