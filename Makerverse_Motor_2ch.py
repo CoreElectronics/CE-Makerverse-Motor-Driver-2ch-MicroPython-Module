@@ -64,6 +64,11 @@ class motor():
         self.direction = _REVERSE
         self.go()
 
+    def drive(self, speed, duration_ms):
+        self.speed(speed)
+        time.sleep_ms(duration_ms)
+        self.stop()
+
 class twoMotorRobot():
     def __init__(self, pwmPinLeft = 0, dirPinLeft = 1, pwmPinRight = 2, dirPinRight = 3):
         self.motorLeft = motor(pwmPinLeft, dirPinLeft)

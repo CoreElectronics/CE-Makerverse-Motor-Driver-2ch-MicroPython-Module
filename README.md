@@ -13,7 +13,7 @@ The minimum requirements to drive a single motor at full speed, connected to the
 ```python
 from Makerverse_Motor_2ch import motor
 
-m1 = motor()
+m1 = motor(pwmPin = 0, dirPin = 1)
 m1.go()
 ```
 
@@ -27,7 +27,7 @@ from machine import Pin
 
 sensor = Pin(3, Pin.IN, Pin.PULL_DOWN)
 
-m1 = motor(pwmPin = 2, speed = 80)
+m1 = motor(pwmPin = 2, dirPin = 1, speed = 80)
 m1.go()
 
 # Wait for the sensor to go high
@@ -45,7 +45,7 @@ This basic example moves the motor 100 steps forward, 45 degrees backward, then 
 ```python
 from Makerverse_Motor_2ch import bipolarStepper
 
-stepper = bipolarStepper()
+stepper = bipolarStepper(pwmPinA = 0, dirPinA = 1, pwmPinB = 2, dirPinB = 3)
 
 stepper.rotate(50)
 stepper.rotate(angle=-180)
