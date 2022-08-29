@@ -156,7 +156,7 @@ class bipolarStepper():
         self.stepsPerRotation = stepsPerRotation
 
     def setRPM(self, RPM):
-        self.stepDelay_ms = int(60000/(RPM*stepsPerRotation))
+        self.stepDelay_ms = int(60000/(RPM*self.stepsPerRotation))
 
     def setHome(self):
         self.steps = 0
